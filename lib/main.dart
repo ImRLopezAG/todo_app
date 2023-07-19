@@ -9,18 +9,17 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
-      theme: ThemeData.dark(useMaterial3: true).copyWith(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.blue,
-          elevation: 0,
-        ),
-        colorScheme: ThemeData.dark().colorScheme.copyWith(
-              primary: Colors.blue,
-              secondary: Colors.blue[200],
-            ),
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Todo App',
+        home: const HomeScreen(),
+        theme: ThemeData.dark(useMaterial3: true).copyWith(
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.blue,
+            elevation: 0,
+          ),
+          colorScheme: const ColorScheme.dark(
+            primary: Colors.blue,
+          ),
+        ));
   }
 }

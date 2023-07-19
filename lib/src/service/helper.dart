@@ -1,11 +1,21 @@
 import 'package:sqflite/sqflite.dart' as sql;
 
 class SQLHelper {
-  static final SQLHelper _instance = SQLHelper.internal();
+  static final SQLHelper _instance = SQLHelper._internal();
+
   factory SQLHelper() => _instance;
-  SQLHelper.internal();
-  
-  Future<sql.Database> get db async => _instance.initDb();
+
+  SQLHelper._internal();
+
+  static sql.Database? _database;
+
+  Future<sql.Database> get db async {
+    if (_database != null) {
+      return _database!;
+    }
+    _database = await initDb();
+    return _database!;
+  }
 
   Future<sql.Database> initDb() async {
     final databasePath = await sql.getDatabasesPath();
@@ -19,11 +29,10 @@ class SQLHelper {
           'id INTEGER PRIMARY KEY AUTOINCREMENT, '
           'title TEXT, '
           'description TEXT, '
-          'isDone INTEGER)'
+          'isDone INTEGER)',
         );
       },
     );
     return database;
   }
-
 }

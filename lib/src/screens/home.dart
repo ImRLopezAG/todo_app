@@ -65,7 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
       _controllers['description']!.text = task.description;
       id = task.id;
     }
-    // ignore: use_build_context_synchronously
     showModalBottomSheet(
       elevation: 5,
       isScrollControlled: true,

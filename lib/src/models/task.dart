@@ -26,15 +26,6 @@ class Task {
     );
   }
 
-  Task copyWithMap(Map<String, dynamic> map) {
-    return Task(
-      id: map['id'] as int?,
-      title: map['title'] as String,
-      description: map['description'] as String,
-      isDone: map['isDone'] as int,
-    );
-  }
-
   Map<String, dynamic> toMap() {
     return {
       'id': id,
